@@ -10,14 +10,31 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupUI()
         setupTableView()
     }
     
+    private func setupUI() {
+        self.backgroundColor = .clear
+        contentView.backgroundColor = AppTheme.Colors.surface
+        contentView.layer.cornerRadius = 16
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = AppTheme.Colors.separator.cgColor
+        contentView.clipsToBounds = true
+        
+        // Sutil sombra para dar profundidad
+        self.applyShadow()
+        
+        categoryTitleLabel.textColor = AppTheme.Colors.textPrimary
+        categoryTitleLabel.font = AppTheme.Fonts.bold(size: 22)
+    }
+    
     private func setupTableView() {
+        tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
     }
     
     func configure(with category: ShowCategory) {

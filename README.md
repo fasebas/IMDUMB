@@ -9,38 +9,47 @@ Se ha implementado **Clean Architecture** en combinación con el patrón de dise
 ### Capas:
 - **Domain:** Contiene las Entidades y Casos de Uso (Lógica de negocio pura).
 - **Data:** Implementación de Repositorios y Servicios de Red (Alamofire).
-- **Presentation:** Módulos organizados por escenas (Splash, Listado, Detalle) usando MVP y archivos `.xib` exclusivamente.
+- **Presentation:** Módulos organizados por escenas (Splash, Listado, Detalle) usando MVP y archivos \`.xib\` exclusivamente.
 - **Core:** Extensiones, constantes y utilidades reutilizables.
 
 ## 🛠️ Stack Tecnológico
-- **Lenguaje:** Swift 6.0+
+- **Lenguaje:** Swift 6.0
 - **Interfaz:** UIKit (XIBs) - *No SwiftUI, No Vistas Programáticas*.
 - **Arquitectura:** MVP + Clean Architecture.
 - **Gestión de Dependencias:** Swift Package Manager (SPM).
-- **Networking:** Alamofire.
-- **Backend/Config:** Firebase (Core y Remote Config).
+- **Networking:** Alamofire (~> 5.10.0).
+- **Backend/Config:** Firebase SDK (~> 11.4.0) (Core y Remote Config).
 
 ## 🧩 Principios SOLID Aplicados
 La documentación detallada de los principios se encuentra en los siguientes archivos:
-1.  **Single Responsibility Principle (SRP):** Ver `Data/Network/NetworkService.swift`.
-2.  **Dependency Inversion Principle (DIP):** Ver `Domain/UseCases/GetMoviesUseCase.swift`.
-3.  **Interface Segregation Principle (ISP):** Ver `Presentation/MoviesList/Presenter/MoviesListPresenter.swift`.
+1.  **Single Responsibility Principle (SRP):** Ver \`Data/Network/NetworkService.swift\`.
+2.  **Dependency Inversion Principle (DIP):** Ver \`Domain/UseCases/GetMoviesUseCase.swift\`.
+3.  **Interface Segregation Principle (ISP):** Ver \`Presentation/MoviesList/Presenter/MoviesListPresenter.swift\`.
 
 ## 🚀 Instalación y Ejecución
 1.  Clonar el repositorio:
-    ```bash
-    git clone https://github.com/tu-usuario/IMDUMB.git
-    ```
-2.  Abrir `IMDUMB.xcodeproj` en Xcode (Versión 15.0+ recomendada).
-3.  **Firebase:** El archivo `GoogleService-Info.plist` ya está incluido en el repositorio en la carpeta `Resources/` para facilitar la revisión técnica inmediata.
+    \`\`\`bash
+    git clone https://github.com/fasebas/IMDUMB.git
+    \`\`\`
+2.  Abrir \`IMDUMB.xcodeproj\` en Xcode (Versión 15.0+ recomendada).
+3.  **Firebase:** El archivo \`GoogleService-Info.plist\` ya está incluido en el repositorio en la carpeta \`Resources/\` para facilitar la revisión técnica inmediata.
 4.  Esperar a que Xcode resuelva las dependencias de SPM (Alamofire y Firebase).
 5.  Seleccionar el Scheme **IMDUMB-Dev** o **IMDUMB-Prod**.
-6.  Compilar y Ejecutar (`Cmd + R`).
+6.  Compilar y Ejecutar (\`Cmd + R\`).
+
+## 🧪 Mocks y Testing
+El proyecto provee una alternativa de DataStore para QA manual y pruebas unitarias:
+- **MockMovieDataStore:** Localizado en \`Data/DataStores/Mock/\`.
+- **Uso:** Se puede inyectar en el \`MovieRepository\` al inicializarlo:
+  \`\`\`swift
+  let mockDataStore = MockMovieDataStore()
+  let repository = MovieRepository(dataStore: mockDataStore)
+  \`\`\`
 
 ## 📡 API Endpoints
-Se utiliza la API gratuita de **TVMaze** para garantizar la disponibilidad inmediata sin necesidad de claves privadas:
-- Listado: `https://api.tvmaze.com/shows`
-- Reparto: `https://api.tvmaze.com/shows/{id}/cast`
+Se utiliza la API gratuita de **TVMaze**:
+- Listado: \`https://api.tvmaze.com/shows\`
+- Reparto: \`https://api.tvmaze.com/shows/{id}/cast\`
 
 ---
 *Desarrollado como parte de un reto técnico para la evaluación de habilidades en desarrollo iOS Senior.*

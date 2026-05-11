@@ -27,32 +27,32 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rec-container">
-                    <rect key="frame" x="0.0" y="502" width="393" height="350"/>
+                    <rect key="frame" x="0.0" y="558.33333333333337" width="393" height="293.66666666666663"/>
                     <subviews>
-                        <label opaque="NO" userLabel="Title" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rec-title">
-                            <rect key="frame" x="20" y="20" width="353" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <label opaque="NO" userLabel="Title" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rec-title">
+                            <rect key="frame" x="20" y="24" width="353" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userLabel="Summary" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary text that can grow..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rec-summary">
-                            <rect key="frame" x="20" y="54" width="353" height="18"/>
+                            <rect key="frame" x="20" y="58" width="353" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" systemColor="secondaryLabelColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deja tu comentario..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rec-txt">
-                            <rect key="frame" x="20" y="92" width="353" height="40"/>
+                            <rect key="frame" x="20" y="96" width="353" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="h-40"/>
+                                <constraint firstAttribute="height" constant="44" id="h-44"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rec-btn">
-                            <rect key="frame" x="20" y="152" width="353" height="50"/>
+                            <rect key="frame" x="20" y="160" width="353" height="54"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="h-50"/>
+                                <constraint firstAttribute="height" constant="54" id="h-54"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Confirmar Recomendación"/>
@@ -64,7 +64,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="rec-title" secondAttribute="trailing" constant="20" id="c1"/>
-                        <constraint firstItem="rec-title" firstAttribute="top" secondItem="rec-container" secondAttribute="top" constant="20" id="c2"/>
+                        <constraint firstItem="rec-title" firstAttribute="top" secondItem="rec-container" secondAttribute="top" constant="24" id="c2"/>
                         <constraint firstItem="rec-title" firstAttribute="leading" secondItem="rec-container" secondAttribute="leading" constant="20" id="c3"/>
                         <constraint firstItem="rec-summary" firstAttribute="top" secondItem="rec-title" secondAttribute="bottom" constant="10" id="c4"/>
                         <constraint firstItem="rec-summary" firstAttribute="leading" secondItem="rec-title" secondAttribute="leading" id="c5"/>
@@ -75,8 +75,8 @@
                         <constraint firstItem="rec-btn" firstAttribute="top" secondItem="rec-txt" secondAttribute="bottom" constant="20" id="c10"/>
                         <constraint firstItem="rec-btn" firstAttribute="leading" secondItem="rec-title" secondAttribute="leading" id="c11"/>
                         <constraint firstItem="rec-btn" firstAttribute="trailing" secondItem="rec-title" secondAttribute="trailing" id="c12"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rec-btn" secondAttribute="bottom" constant="40" id="c13"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="h-min"/>
+                        <constraint firstAttribute="bottom" secondItem="rec-btn" secondAttribute="bottom" constant="40" id="c13"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="700" id="h-max-limit"/>
                     </constraints>
                 </view>
             </subviews>

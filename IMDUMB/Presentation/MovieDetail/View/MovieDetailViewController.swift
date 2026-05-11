@@ -19,7 +19,23 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.backgroundColor = AppTheme.Colors.background
         title = "Detalle"
+        
+        titleLabel.textColor = AppTheme.Colors.textPrimary
+        titleLabel.font = AppTheme.Fonts.bold(size: 28)
+
+        ratingLabel.textColor = AppTheme.Colors.primary
+        ratingLabel.font = AppTheme.Fonts.medium(size: 18)
+
+        summaryTextView.backgroundColor = .clear
+        summaryTextView.textColor = AppTheme.Colors.textSecondary
+        summaryTextView.isEditable = false
+        summaryTextView.isScrollEnabled = false
+
+        castLabel.textColor = AppTheme.Colors.textSecondary
+        castLabel.font = AppTheme.Fonts.regular(size: 14)
+        
         setupCarousel()
     }
     
@@ -42,27 +58,45 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController: MovieDetailViewProtocol {
     func showLoading() {
         activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
     
     func hideLoading() {
         activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
-    
+
     func showMovieDetail(_ show: Show) {
         titleLabel.text = show.name
-        ratingLabel.text = "⭐ \(show.rating?.average ?? 0.0)"
+        ratingLabel.text = "★ \(show.rating?.average ?? 0.0)"
         
-        // Renderizado de HTML (Requerimiento del reto)
+        // Renderizado de HTML con alto contraste dinámico
         if let htmlData = show.summary?.data(using: .utf8) {
-            let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-                .documentType: NSAttributedString.DocumentType.html,
-                .characterEncoding: String.Encoding.utf8.rawValue
-            ]
-            if let attributedString = try? NSAttributedString(data: htmlData, options: options, documentAttributes: nil) {
+            let isDarkMode = traitCollection.userInterfaceStyle == .dark
+            let textColor = isDarkMode ? "#E4E4E7" : "#3F3F46" // Zinc-200 vs Zinc-700
+            let boldColor = isDarkMode ? "#FFFFFF" : "#000000" // Blanco puro vs Negro puro
+            
+            let style = """
+            <style>
+                body { 
+                    font-family: -apple-system; 
+                    font-size: 16px; 
+                    color: \(textColor); 
+                    line-height: 1.6; 
+                }
+                b, strong { 
+                    color: \(boldColor); 
+                    font-weight: bold;
+                }
+            </style>
+            """
+            let htmlString = style + (show.summary ?? "")
+            if let attributedString = try? NSAttributedString(data: htmlString.data(using: .utf8)!, 
+                                                            options: [.documentType: NSAttributedString.DocumentType.html], 
+                                                            documentAttributes: nil) {
                 summaryTextView.attributedText = attributedString
             }
         }
-        
         // Imagen inicial por si falla el carrusel
         if let originalImage = show.image?.original {
             self.images = [originalImage]
@@ -93,7 +127,6 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
         
-        // Buscamos o creamos el UIImageView para no recrearlo siempre
         let imageView: UIImageView
         if let existingImageView = cell.contentView.subviews.first(where: { $0 is UIImageView }) as? UIImageView {
             imageView = existingImageView
@@ -106,9 +139,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
         }
         
         let urlString = images[indexPath.row]
-        // Pequeño truco: intentar forzar https si la API manda http
         let secureUrlString = urlString.replacingOccurrences(of: "http://", with: "https://")
-        
         imageView.loadImage(from: secureUrlString)
         
         return cell

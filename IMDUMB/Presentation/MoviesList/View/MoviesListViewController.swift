@@ -16,15 +16,20 @@ class MoviesListViewController: UIViewController {
     }
     
     private func setupUI() {
-        title = "Categorías"
+        view.backgroundColor = AppTheme.Colors.background
+        title = "Explorar"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         setupCollectionView()
     }
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 24
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
         collectionView.collectionViewLayout = layout
+        collectionView.backgroundColor = .clear
         
         collectionView.dataSource = self
         collectionView.delegate = self

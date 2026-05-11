@@ -16,8 +16,34 @@ class RecommendModalViewController: UIViewController {
     }
     
     private func setupUI() {
-        containerView.layer.cornerRadius = 20
+        view.backgroundColor = .clear
+        
+        // Efecto Blur (Glassmorphism)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.insertSubview(blurEffectView, at: 0)
+        
+        containerView.backgroundColor = AppTheme.Colors.surface.withAlphaComponent(0.9)
+        containerView.applyRoundedBorder()
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        titleLabel.textColor = AppTheme.Colors.textPrimary
+        titleLabel.font = AppTheme.Fonts.bold(size: 22)
+        
+        summaryLabel.textColor = AppTheme.Colors.textSecondary
+        summaryLabel.font = AppTheme.Fonts.regular(size: 15)
+        
+        commentTextField.backgroundColor = AppTheme.Colors.background
+        commentTextField.textColor = AppTheme.Colors.textPrimary
+        commentTextField.layer.cornerRadius = 8
+        commentTextField.layer.borderWidth = 1
+        commentTextField.layer.borderColor = AppTheme.Colors.separator.cgColor
+        commentTextField.attributedPlaceholder = NSAttributedString(
+            string: "Escribe tu recomendación...",
+            attributes: [.foregroundColor: AppTheme.Colors.textSecondary]
+        )
         
         // Tap para cerrar al tocar fuera
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -40,14 +66,31 @@ extension RecommendModalViewController: RecommendModalViewProtocol {
     func showMovieDetail(name: String, summary: String) {
         titleLabel.text = name
         
-        // Limpiar HTML para el modal simple
+        // Renderizado de HTML con alto contraste dinámico para el modal
         if let htmlData = summary.data(using: .utf8) {
-            let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-                .documentType: NSAttributedString.DocumentType.html,
-                .characterEncoding: String.Encoding.utf8.rawValue
-            ]
-            if let attributedString = try? NSAttributedString(data: htmlData, options: options, documentAttributes: nil) {
-                summaryLabel.text = attributedString.string
+            let isDarkMode = traitCollection.userInterfaceStyle == .dark
+            let textColor = isDarkMode ? "#E4E4E7" : "#3F3F46"
+            let boldColor = isDarkMode ? "#FFFFFF" : "#000000"
+            
+            let style = """
+            <style>
+                body { 
+                    font-family: -apple-system; 
+                    font-size: 15px; 
+                    color: \(textColor); 
+                    line-height: 1.4; 
+                }
+                b, strong { 
+                    color: \(boldColor); 
+                    font-weight: bold;
+                }
+            </style>
+            """
+            let htmlString = style + summary
+            if let attributedString = try? NSAttributedString(data: htmlString.data(using: .utf8)!, 
+                                                            options: [.documentType: NSAttributedString.DocumentType.html], 
+                                                            documentAttributes: nil) {
+                summaryLabel.attributedText = attributedString
             }
         }
     }

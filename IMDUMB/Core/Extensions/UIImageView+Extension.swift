@@ -39,7 +39,12 @@ extension UIImageView {
                 let cachedData = CachedURLResponse(response: response, data: data)
                 cache.storeCachedResponse(cachedData, for: request)
                 
+                // Transición suave (Fade-in)
+                self?.alpha = 0
                 self?.image = image
+                UIView.animate(withDuration: 0.3) {
+                    self?.alpha = 1
+                }
             }
         }.resume()
     }

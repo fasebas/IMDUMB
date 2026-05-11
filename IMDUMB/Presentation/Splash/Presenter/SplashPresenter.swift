@@ -33,7 +33,7 @@ class SplashPresenter: SplashPresenterProtocol {
         remoteConfig.fetchAndActivate { [weak self] status, error in
             DispatchQueue.main.async {
                 self?.view?.hideLoading()
-                let welcomeMessage = self?.remoteConfig["welcome_message"].stringValue ?? "Cargando..."
+                let welcomeMessage = self?.remoteConfig["welcome_message"].stringValue ?? "IMDUMB"
                 self?.view?.showInitialText(welcomeMessage)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
