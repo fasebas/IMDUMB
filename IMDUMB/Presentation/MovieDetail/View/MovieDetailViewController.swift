@@ -63,11 +63,16 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
             }
         }
         
-        // Para el carrusel usaremos la imagen original si existe
+        // Imagen inicial por si falla el carrusel
         if let originalImage = show.image?.original {
-            self.images = [originalImage] // En un caso real buscaríamos más imágenes
+            self.images = [originalImage]
             carouselCollectionView.reloadData()
         }
+    }
+    
+    func showImages(_ imageUrls: [String]) {
+        self.images = imageUrls
+        self.carouselCollectionView.reloadData()
     }
     
     func showCast(_ cast: [Cast]) {
@@ -88,14 +93,23 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
         
-        let imageView = UIImageView(frame: cell.bounds)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.loadImage(from: images[indexPath.row])
+        // Buscamos o creamos el UIImageView para no recrearlo siempre
+        let imageView: UIImageView
+        if let existingImageView = cell.contentView.subviews.first(where: { $0 is UIImageView }) as? UIImageView {
+            imageView = existingImageView
+        } else {
+            imageView = UIImageView(frame: cell.bounds)
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            cell.contentView.addSubview(imageView)
+        }
         
-        // Limpiar subviews anteriores para no duplicar
-        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-        cell.contentView.addSubview(imageView)
+        let urlString = images[indexPath.row]
+        // Pequeño truco: intentar forzar https si la API manda http
+        let secureUrlString = urlString.replacingOccurrences(of: "http://", with: "https://")
+        
+        imageView.loadImage(from: secureUrlString)
         
         return cell
     }

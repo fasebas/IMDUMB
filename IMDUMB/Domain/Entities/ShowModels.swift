@@ -33,3 +33,18 @@ struct Cast: Codable {
 struct Person: Codable {
     let name: String
 }
+
+// Entidad para imágenes adicionales (Carrusel)
+struct ShowImageResource: Codable {
+    let type: String
+    let resolutions: ImageResolutions
+}
+
+struct ImageResolutions: Codable {
+    let original: TVMazeImage
+    let medium: TVMazeImage?
+}
+
+struct TVMazeImage: Codable {
+    let url: String
+}

@@ -17,6 +17,7 @@ protocol MoviesListPresenterProtocol {
 // El Presenter se comunica con la Vista a través de un protocolo específico (MoviesListViewProtocol),
 // asegurando que solo tenga acceso a los métodos que realmente necesita para actualizar la UI.
 class MoviesListPresenter: MoviesListPresenterProtocol {
+    
     weak var view: MoviesListViewProtocol?
     private let getMoviesUseCase: GetMoviesUseCaseProtocol
     private var categories: [ShowCategory] = []
@@ -26,6 +27,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
         self.getMoviesUseCase = getMoviesUseCase
     }
     
+    /// Orquesta la carga de películas categorizadas desde la capa de dominio.
     func viewDidLoad() {
         view?.showLoading()
         getMoviesUseCase.execute { [weak self] result in
