@@ -1,0 +1,4 @@
+// Dev.xcconfig
+APP_NAME = IMDUMB (Dev)
+APP_BUNDLE_ID = IMDUMB.IMDUMB.dev
+API_BASE_URL = https:\/\/api-dev.imdumb.com
