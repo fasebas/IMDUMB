@@ -57,7 +57,8 @@ Se utiliza la API gratuita de **TVMaze**:
 ## 📸 Preview
 A continuación se muestra una grabación de la aplicación en funcionamiento, destacando el diseño Bento Box, el modo oscuro adaptativo y las animaciones cinematográficas:
 
-![App Demo](Resources/Screenshots/app_demo.gif)
+<img width="360" height="746" alt="Grabación de pantalla 2026-05-11 a la(s) 11 43 30 a" src="https://github.com/user-attachments/assets/67ce3cd6-838f-4c98-99d6-94bf075527ac" />
+
 
 ---
 *Nota: Si el video no se reproduce directamente en GitHub, puedes encontrarlo en la carpeta Resources/Screenshots/app_demo.gif.*
