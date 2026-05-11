@@ -4,6 +4,9 @@ protocol GetMoviesUseCaseProtocol {
     func execute(completion: @escaping (Result<[ShowCategory], Error>) -> Void)
 }
 
+// SOLID: Dependency Inversion Principle (DIP)
+// El Caso de Uso depende de una abstracción (MovieRepositoryProtocol) y no de una implementación concreta.
+// Esto permite que el componente sea testeable y desacoplado de la fuente de datos.
 class GetMoviesUseCase: GetMoviesUseCaseProtocol {
     private let repository: MovieRepositoryProtocol
     

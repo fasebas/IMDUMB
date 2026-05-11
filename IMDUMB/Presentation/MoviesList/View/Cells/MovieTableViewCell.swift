@@ -17,8 +17,10 @@ class MovieTableViewCell: UITableViewCell {
         movieTitleLabel.text = show.name
         movieRatingLabel.text = "⭐ \(show.rating?.average ?? 0.0)"
         
-        // Aquí usaríamos Kingfisher o una extensión para cargar la imagen. 
-        // Por ahora, pondremos un color de fondo para saber que está ahí.
-        movieImageView.backgroundColor = .systemGray5
+        if let imageUrl = show.image?.medium {
+            movieImageView.loadImage(from: imageUrl)
+        } else {
+            movieImageView.backgroundColor = .systemGray5
+        }
     }
 }

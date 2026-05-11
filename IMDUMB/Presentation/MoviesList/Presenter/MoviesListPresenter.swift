@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 protocol MoviesListViewProtocol: AnyObject {
     func showLoading()
@@ -12,6 +13,9 @@ protocol MoviesListPresenterProtocol {
     func didSelectMovie(_ show: Show)
 }
 
+// SOLID: Interface Segregation Principle (ISP)
+// El Presenter se comunica con la Vista a través de un protocolo específico (MoviesListViewProtocol),
+// asegurando que solo tenga acceso a los métodos que realmente necesita para actualizar la UI.
 class MoviesListPresenter: MoviesListPresenterProtocol {
     weak var view: MoviesListViewProtocol?
     private let getMoviesUseCase: GetMoviesUseCaseProtocol
@@ -39,7 +43,13 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     }
     
     func didSelectMovie(_ show: Show) {
-        // Lógica para navegar al detalle
-        print("Seleccionada película: \(show.name)")
+        view?.hideLoading() // Por si acaso
+        let detailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        let presenter = MovieDetailPresenter(view: detailVC, show: show)
+        detailVC.presenter = presenter
+        
+        if let viewController = view as? UIViewController {
+            viewController.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
