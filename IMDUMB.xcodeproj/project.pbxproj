@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		49258F282FB163830082B4A0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 49258F272FB163830082B4A0 /* Alamofire */; };
-		49258F2A2FB163830082B4A0 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 49258F292FB163830082B4A0 /* AlamofireDynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,10 +15,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		49258F162FB157240082B4A0 /* Exceptions for "IMDUMB" folder in "IMDUMB" target */ = {
+		49258F542FB177920082B4A0 /* Exceptions for "IMDUMB" folder in "IMDUMB" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = 49258F032FB157230082B4A0 /* IMDUMB */;
 		};
@@ -29,7 +28,7 @@
 		49258F062FB157230082B4A0 /* IMDUMB */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				49258F162FB157240082B4A0 /* Exceptions for "IMDUMB" folder in "IMDUMB" target */,
+				49258F542FB177920082B4A0 /* Exceptions for "IMDUMB" folder in "IMDUMB" target */,
 			);
 			path = IMDUMB;
 			sourceTree = "<group>";
@@ -42,7 +41,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49258F282FB163830082B4A0 /* Alamofire in Frameworks */,
-				49258F2A2FB163830082B4A0 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +84,6 @@
 			name = IMDUMB;
 			packageProductDependencies = (
 				49258F272FB163830082B4A0 /* Alamofire */,
-				49258F292FB163830082B4A0 /* AlamofireDynamic */,
 			);
 			productName = IMDUMB;
 			productReference = 49258F042FB157230082B4A0 /* IMDUMB.app */;
@@ -158,8 +155,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VB2BQ74R2V;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IMDUMB/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = IMDUMB/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -189,8 +186,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VB2BQ74R2V;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IMDUMB/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = IMDUMB/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -265,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -323,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -372,11 +369,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49258F262FB163830082B4A0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		49258F292FB163830082B4A0 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49258F262FB163830082B4A0 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
