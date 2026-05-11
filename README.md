@@ -53,3 +53,11 @@ Se utiliza la API gratuita de **TVMaze**:
 
 ---
 *Desarrollado como parte de un reto técnico para la evaluación de habilidades en desarrollo iOS Senior.*
+
+## 📸 Preview
+A continuación se muestra una grabación de la aplicación en funcionamiento, destacando el diseño Bento Box, el modo oscuro adaptativo y las animaciones cinematográficas:
+
+![App Demo](Resources/Screenshots/app_demo.mov)
+
+---
+*Nota: Si el video no se reproduce directamente en GitHub, puedes encontrarlo en la carpeta Resources/Screenshots/app_demo.mov.*
