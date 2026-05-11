@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		49258F282FB163830082B4A0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 49258F272FB163830082B4A0 /* Alamofire */; };
+		49DA3B022FB1A1F800B76629 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B012FB1A1F800B76629 /* FirebaseAI */; };
+		49DA3B042FB1A1F800B76629 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B032FB1A1F800B76629 /* FirebaseAILogic */; };
+		49DA3B062FB1A1F800B76629 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B052FB1A1F800B76629 /* FirebaseAnalytics */; };
+		49DA3B082FB1A1F800B76629 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B072FB1A1F800B76629 /* FirebaseAnalyticsCore */; };
+		49DA3B0A2FB1A1F800B76629 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B092FB1A1F800B76629 /* FirebaseAnalyticsIdentitySupport */; };
+		49DA3B192FB1ADA900B76629 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 49DA3B182FB1ADA900B76629 /* FirebaseRemoteConfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +46,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DA3B042FB1A1F800B76629 /* FirebaseAILogic in Frameworks */,
 				49258F282FB163830082B4A0 /* Alamofire in Frameworks */,
+				49DA3B0A2FB1A1F800B76629 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
+				49DA3B192FB1ADA900B76629 /* FirebaseRemoteConfig in Frameworks */,
+				49DA3B082FB1A1F800B76629 /* FirebaseAnalyticsCore in Frameworks */,
+				49DA3B062FB1A1F800B76629 /* FirebaseAnalytics in Frameworks */,
+				49DA3B022FB1A1F800B76629 /* FirebaseAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				49258F062FB157230082B4A0 /* IMDUMB */,
+				49DA3B172FB1ADA900B76629 /* Frameworks */,
 				49258F052FB157230082B4A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +74,13 @@
 				49258F042FB157230082B4A0 /* IMDUMB (Dev).app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		49DA3B172FB1ADA900B76629 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +104,12 @@
 			name = IMDUMB;
 			packageProductDependencies = (
 				49258F272FB163830082B4A0 /* Alamofire */,
+				49DA3B012FB1A1F800B76629 /* FirebaseAI */,
+				49DA3B032FB1A1F800B76629 /* FirebaseAILogic */,
+				49DA3B052FB1A1F800B76629 /* FirebaseAnalytics */,
+				49DA3B072FB1A1F800B76629 /* FirebaseAnalyticsCore */,
+				49DA3B092FB1A1F800B76629 /* FirebaseAnalyticsIdentitySupport */,
+				49DA3B182FB1ADA900B76629 /* FirebaseRemoteConfig */,
 			);
 			productName = IMDUMB;
 			productReference = 49258F042FB157230082B4A0 /* IMDUMB (Dev).app */;
@@ -115,6 +141,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				49258F262FB163830082B4A0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 49258F052FB157230082B4A0 /* Products */;
@@ -370,6 +397,14 @@
 				minimumVersion = 5.12.0;
 			};
 		};
+		49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -377,6 +412,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49258F262FB163830082B4A0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		49DA3B012FB1A1F800B76629 /* FirebaseAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		49DA3B032FB1A1F800B76629 /* FirebaseAILogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAILogic;
+		};
+		49DA3B052FB1A1F800B76629 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		49DA3B072FB1A1F800B76629 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+		49DA3B092FB1A1F800B76629 /* FirebaseAnalyticsIdentitySupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsIdentitySupport;
+		};
+		49DA3B182FB1ADA900B76629 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

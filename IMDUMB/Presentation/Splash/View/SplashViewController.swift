@@ -9,21 +9,38 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var presenter: SplashPresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        presenter = SplashPresenter(view: self)
+        presenter?.viewDidLoad()
     }
+}
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension SplashViewController: SplashViewProtocol {
+    func showLoading() {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
-    */
-
+    
+    func hideLoading() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    func navigateToMain() {
+        DispatchQueue.main.async {
+            let moviesListVC = MoviesListViewController(nibName: "MoviesListViewController", bundle: nil)
+            let navigationController = UINavigationController(rootViewController: moviesListVC)
+            
+            // Reemplazar la ventana raíz con una transición suave
+            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                window.rootViewController = navigationController
+                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            }
+        }
+    }
 }

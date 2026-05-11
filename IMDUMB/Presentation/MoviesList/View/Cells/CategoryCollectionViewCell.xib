@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="IMDUMB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="main-v">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
+                        <subviews>
+                            <label opaque="NO" userLabel="Category Title" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-cat">
+                                <rect key="frame" x="15" y="10" width="320" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="table-v">
+                                <rect key="frame" x="10" y="44" width="330" height="246"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lbl-cat" firstAttribute="leading" secondItem="main-v" secondAttribute="leading" constant="15" id="c1"/>
+                            <constraint firstItem="lbl-cat" firstAttribute="top" secondItem="main-v" secondAttribute="top" constant="10" id="c2"/>
+                            <constraint firstAttribute="trailing" secondItem="lbl-cat" secondAttribute="trailing" constant="15" id="c3"/>
+                            <constraint firstItem="table-v" firstAttribute="top" secondItem="lbl-cat" secondAttribute="bottom" constant="10" id="c4"/>
+                            <constraint firstItem="table-v" firstAttribute="leading" secondItem="main-v" secondAttribute="leading" constant="10" id="c5"/>
+                            <constraint firstAttribute="trailing" secondItem="table-v" secondAttribute="trailing" constant="10" id="c6"/>
+                            <constraint firstAttribute="bottom" secondItem="table-v" secondAttribute="bottom" constant="10" id="c7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="main-v" secondAttribute="bottom" id="v1"/>
+                <constraint firstItem="main-v" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="v2"/>
+                <constraint firstAttribute="trailing" secondItem="main-v" secondAttribute="trailing" id="v3"/>
+                <constraint firstItem="main-v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="v4"/>
+            </constraints>
+            <size key="customSize" width="350" height="300"/>
+            <connections>
+                <outlet property="categoryTitleLabel" destination="lbl-cat" id="out-cat"/>
+                <outlet property="tableView" destination="table-v" id="out-table"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
