@@ -5,18 +5,18 @@ protocol MovieRepositoryProtocol {
 }
 
 class MovieRepository: MovieRepositoryProtocol {
-    private let networkService: NetworkServiceProtocol
-    private let baseURL = "https://api.tvmaze.com/shows"
+    private let dataStore: MovieDataStoreProtocol
     
-    init(networkService: NetworkServiceProtocol = NetworkService()) {
-        self.networkService = networkService
+    // Inyección de dependencias: podemos pasar un Remote o un Mock DataStore
+    init(dataStore: MovieDataStoreProtocol = RemoteMovieDataStore()) {
+        self.dataStore = dataStore
     }
     
     func getMoviesGroupedByCategory(completion: @escaping (Result<[ShowCategory], Error>) -> Void) {
-        networkService.request(baseURL) { (result: Result<[Show], Error>) in
+        dataStore.fetchShows { [weak self] result in
             switch result {
             case .success(let shows):
-                let grouped = self.groupShowsByGenre(shows)
+                let grouped = self?.groupShowsByGenre(shows) ?? []
                 completion(.success(grouped))
             case .failure(let error):
                 completion(.failure(error))

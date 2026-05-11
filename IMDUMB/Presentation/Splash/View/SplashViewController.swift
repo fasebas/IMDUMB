@@ -10,11 +10,13 @@ import UIKit
 class SplashViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     var presenter: SplashPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        welcomeLabel.text = ""
         presenter = SplashPresenter(view: self)
         presenter?.viewDidLoad()
     }
@@ -29,6 +31,10 @@ extension SplashViewController: SplashViewProtocol {
     func hideLoading() {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
+    }
+    
+    func showInitialText(_ text: String) {
+        welcomeLabel.text = text
     }
     
     func navigateToMain() {

@@ -4,6 +4,7 @@ import FirebaseRemoteConfig
 protocol SplashViewProtocol: AnyObject {
     func showLoading()
     func hideLoading()
+    func showInitialText(_ text: String)
     func navigateToMain()
 }
 
@@ -26,18 +27,16 @@ class SplashPresenter: SplashPresenterProtocol {
     
     private func fetchRemoteConfig() {
         let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0 // Solo para desarrollo
+        settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
         
         remoteConfig.fetchAndActivate { [weak self] status, error in
             DispatchQueue.main.async {
                 self?.view?.hideLoading()
-                // Aquí podrías guardar valores en memoria como pide el reto
-                let welcomeMessage = self?.remoteConfig["welcome_message"].stringValue ?? ""
-                print("Firebase Remote Config: \(welcomeMessage)")
+                let welcomeMessage = self?.remoteConfig["welcome_message"].stringValue ?? "Cargando..."
+                self?.view?.showInitialText(welcomeMessage)
                 
-                // Pequeño delay para que se vea el splash (opcional)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self?.view?.navigateToMain()
                 }
             }

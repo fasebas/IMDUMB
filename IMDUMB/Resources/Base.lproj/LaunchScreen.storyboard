@@ -16,20 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userLabel="LaunchLabel" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MODO: LAUNCH SCREEN (SISTEMA)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="launch-id-123">
-                                <rect key="frame" x="20" y="415.66666666666669" width="353" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" systemColor="systemBlueColor"/>
+                            <label opaque="NO" userLabel="Logo" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDUMB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="logo-id">
+                                <rect key="frame" x="20" y="401.66666666666669" width="353" height="49"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="42"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userLabel="Footer" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Technical Challenge iOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="footer-id">
+                                <rect key="frame" x="20" y="797" width="353" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="launch-id-123" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="c-center-y"/>
-                            <constraint firstItem="launch-id-123" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c-center-x"/>
-                            <constraint firstAttribute="trailing" secondItem="launch-id-123" secondAttribute="trailing" constant="20" id="c-trailing"/>
-                            <constraint firstItem="launch-id-123" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="c-leading"/>
+                            <constraint firstItem="logo-id" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="c-center-y"/>
+                            <constraint firstItem="logo-id" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c-center-x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="logo-id" secondAttribute="trailing" constant="20" id="c-trailing"/>
+                            <constraint firstItem="logo-id" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="c-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="footer-id" secondAttribute="bottom" constant="4" id="f-bottom"/>
+                            <constraint firstItem="footer-id" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="footer-id" secondAttribute="trailing" constant="20" id="f-trailing"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,11 +48,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
