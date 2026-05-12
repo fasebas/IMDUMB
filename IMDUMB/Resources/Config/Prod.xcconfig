@@ -1,4 +1,4 @@
 // Prod.xcconfig
 APP_NAME = IMDUMB
-APP_BUNDLE_ID = IMDUMB.IMDUMB
+APP_BUNDLE_ID = com.fasebas.IMDUMB
 API_BASE_URL = https:\/\/api.imdumb.com
