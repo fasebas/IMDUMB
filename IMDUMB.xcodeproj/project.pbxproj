@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -460,7 +460,7 @@
 				49258F262FB163830082B4A0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				49DA3B002FB1A1F800B76629 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 63;
 			productRefGroup = 49258F052FB157230082B4A0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
